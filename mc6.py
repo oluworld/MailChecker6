@@ -10,36 +10,15 @@ def beep():
 	print '\a'
 	print '\a'
 	
-class xMMSPOP:
-	def __init__(self, acct, user, passwd, host):
-		from poplib import POP3
-		print '>> CONNECT',host
-		H=POP3(host)
-		#H._debugging=10
-		print '>> USER',user
-		ur=H.user(user)
-		print '<<',ur
-		print '>> PASS *****'
-		pr=H.pass_(passwd)
-		print '<<',pr
-		print '++ logged in !! '
-		self.H = H
-	def get_message_count(self):
-		return self.H.stat()[0]
-	def get_message(self,i):
-		return self.H.retr(i)
-	def get_id(self, i):
-		return self.H.uidl(i)
-	def remove(self, i):
-		return self.H.dele(i)
-	def quit(self):
-		return self.H.quit()
-	
 #def GetAccountList():
 #	return [['acct-name', 'user', 'pass', 'server', MMSPOP]]
 
 def tt():
 	R=time.strftime("%y_%m%b%d=%H%M", time.localtime(time.time()))
+	return R
+	
+def tt2():
+	R=time.strftime("%y_%m%b%d (%H%M.%S)", time.localtime(time.time()))
 	return R
 	
 def ttp():
@@ -70,7 +49,7 @@ def main(acct_):
 		pass
 	
 	for each in range(1,min(76,count+1)):
-		print tt(), 'Retrieving ',each, 'of', count,
+		print tt2(), 'Retrieving ',each, 'of', count,
 		uidl = handle.get_id(each).split()[-1:][0]
 		if uidl in M:
 			print 'removing this message'
