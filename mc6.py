@@ -70,7 +70,7 @@ def main(acct_):
 		pass
 	
 	for each in range(1,min(76,count+1)):
-		print 'Retrieving ',each, 'of', count,
+		print tt(), 'Retrieving ',each, 'of', count,
 		uidl = handle.get_id(each).split()[-1:][0]
 		if uidl in M:
 			print 'removing this message'
